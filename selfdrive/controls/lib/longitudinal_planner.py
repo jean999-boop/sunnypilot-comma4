@@ -17,8 +17,12 @@ from openpilot.common.swaglog import cloudlog
 
 from openpilot.sunnypilot.selfdrive.controls.lib.longitudinal_planner import LongitudinalPlannerSP
 
+"""
+CUSTOM ACCELERATION PROFILE: Fast but smooth taking off, scaling progressively
+to non-aggressive cruise acceleration parameters.
+"""
 A_CRUISE_MAX_VALS = [1.4, 1.1, 0.8, 0.5]
-A_CRUISE_MAX_BP = [0., 5.0, 15.0., 30.]
+A_CRUISE_MAX_BP = [0., 5.0, 15.0, 30.0]
 CONTROL_N_T_IDX = ModelConstants.T_IDXS[:CONTROL_N]
 ALLOW_THROTTLE_THRESHOLD = 0.4
 MIN_ALLOW_THROTTLE_SPEED = 2.5
