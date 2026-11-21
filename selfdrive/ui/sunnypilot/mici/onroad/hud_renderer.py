@@ -34,17 +34,17 @@ class HudRendererSP(HudRenderer):
       # CUSTOM BRAND DISPLAY (PARK ONLY)
       if str(gear).lower() == 'park':
         text_string = "sunnypilotboop"
-        font_size = 24  # Adjusted cleanly for the compact comma 4 display
+        font_size = 96  # 4x larger for bold visibility on comma 4 display
 
         font_bold = getattr(ui_state, 'font_bold', rl.get_font_default())
         text_size = rl.measure_text_ex(font_bold, text_string, font_size, 0)
 
-        self._scroll_offset_x += 1.8
+        self._scroll_offset_x += 2.2
         if self._scroll_offset_x > (rect.width + text_size.x):
           self._scroll_offset_x = 0.0
 
         draw_x = rect.x + rect.width - self._scroll_offset_x
-        draw_y = rect.y + 40
+        draw_y = rect.y + (rect.height - text_size.y) / 2
 
         rl.draw_text_ex(
           font_bold,
@@ -52,7 +52,7 @@ class HudRendererSP(HudRenderer):
           rl.Vector2(draw_x, draw_y),
           font_size,
           0,
-          rl.Color(255, 255, 255, 180),
+          rl.Color(255, 220, 110, 230),    # Soft warm gold
         )
       else:
         self._scroll_offset_x = 0.0
